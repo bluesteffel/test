@@ -2,24 +2,23 @@
 <html>
 <head>
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://raw.githack.com/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-    <!-- marker  -->
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: true;">
+    <!-- Lights OUTSIDE marker -->
+    <a-light type="ambient" color="#404040"></a-light>
+    <a-light type="point" intensity="1" position="1 1 1"></a-light>
+    
+    <!-- custom marker -->
     <a-marker preset="custom" type="pattern" 
-              url="https://bluesteffel.github.io/test/markers/pattern-b07e97b0f3fbccd13e20bf32b03dc01b.patt">
-      <!-- 3d model -->
-              <a-gltf-model src="https://bluesteffel.github.io/test/models/your-model.gltf" 
-                    scale="0.5 0.5 0.5"></a-gltf-model>
+              url="./markers/pattern-b07e97b0f3fbccd13e20bf32b03dc01b.patt">
+      <a-gltf-model src="./models/lexinSimpleUV2.glb" 
+                    scale="0.1 0.1 0.1"
+                    position="0 0 0"></a-gltf-model>
     </a-marker>
-
-
-      <!-- lighting -->
-      <a-light type="ambient" color="#404040"></a-light>
-    </a-marker>
-
-    <!-- Camera with marker detection -->
+    
     <a-entity camera></a-entity>
   </a-scene>
 </body>
