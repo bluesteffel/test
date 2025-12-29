@@ -7,12 +7,13 @@
 <body>
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
     <!-- marker  -->
-    <a-marker preset="custom" type="pattern" url="./markers/pattern-b07e97b0f3fbccd13e20bf32b03dc01b.patt">
+    <a-marker preset="custom" type="pattern" 
+              url="https://bluesteffel.github.io/test/markers/pattern-b07e97b0f3fbccd13e20bf32b03dc01b.patt">
+      <!-- 3d model -->
+              <a-gltf-model src="https://bluesteffel.github.io/test/models/your-model.gltf" 
+                    scale="0.5 0.5 0.5"></a-gltf-model>
+    </a-marker>
 
-      <!-- 3D model  -->
-      <a-gltf-model src="/models/lexinSimpleUV2.glb" 
-                scale="0.5 0.5 0.5"
-                    animation="property: rotation; to: 0 360 0; dur: 10000; loop: true;"></a-gltf-model></a-gltf-model>
 
       <!-- lighting -->
       <a-light type="ambient" color="#404040"></a-light>
