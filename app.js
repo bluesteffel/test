@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ARButton } from 'three/addons/webxr/ARButton.js';
 
 let scene, camera, renderer, mixer, clock;
-let ferretModel;
+let elevatorOperator;
 
 init();
 animate();
@@ -44,7 +44,7 @@ function init() {
       action.play();
     });
     
-    scene.add(ferretModel);
+    scene.add(elevatorOperator);
   });
 
   // Resize 
