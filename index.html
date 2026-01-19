@@ -140,6 +140,8 @@
   </style>
 </head>
 
+<body>
+
 <div id="permission-overlay">
   <div id="permission-box">
     <h2>Welcome</h2>
@@ -174,7 +176,9 @@
   
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 
-     <a-marker preset="hiro">
+    <a-marker
+      type="pattern"
+      url="./markers/test.patt">
 
       <a-gltf-model
         src="./models/ferretAR2.glb"
@@ -193,4 +197,5 @@
   `;
   })
 </script>
+</body>
 </html>
