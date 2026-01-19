@@ -176,22 +176,11 @@
   
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 
-    <a-marker
-      type="pattern"
-      url="./markers/test.patt">
-
-      <a-gltf-model
-        src="./models/ferretAR2.glb"
-        scale="0.5 0.5 0.5"
-        rotation="270 0 0"
-        animation-mixer="clip: *; loop: repeat;">
-      </a-gltf-model>
-
-      <a-light type="ambient" color="#404040" intensity="8"></a-light>
-
+    <a-marker preset="hiro">
+    <a-box position="0 0.5 0"></a-box>
     </a-marker>
 
-    <a-entity camera></a-entity>
+      <a-entity camera></a-entity>
 
   </a-scene>
   `;
