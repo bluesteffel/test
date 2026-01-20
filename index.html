@@ -1,196 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <title>Elevator Operator</title>
-
-  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-
-  <!-- Animation support -->
-  <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
-
-  <!-- Stable AR.js (DO NOT use master) -->
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
-
-  <style>
-    /* ---- fonts (unchanged) ---- */
-    @font-face {
-      font-family: 'DM Serif Display';
-      src: url('./fonts/dm-serif-display-v17-latin-regular.woff2') format('woff2');
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'DM Serif Text';
-      src: url('./fonts/dm-serif-text-v13-latin-regular.woff2') format('woff2');
-      font-display: swap;
-    }
-
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
-    /* ---- overlay ---- */
-    #permission-overlay {
-      position: fixed;
-      inset: 0;
-      background-image: url("./images/goldBorder2.png");
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      z-index: 10;
-    }
-
-    #permission-box {
-    width: 90vw;
-    height: auto;
-    max-width: 700px;       
-    margin-top: clamp(40px, 9vh, 100px);
-    padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 20px);
-    text-align: center;
-    font-family: 'DM Serif Text';
-    box-sizing: border-box;
-  }
-
-    #permission-box h2 {
-      font-family: 'DM Serif Display';
-      font-size: clamp(48px, 14vw, 120px);
-      margin: 0 0 1rem;
-      background: conic-gradient(
-        #FFBF00 30%, 
-        #997300 60%, 
-        #FFDE7A 80%
-        );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-    }
-
-    #permission-box p {
-      font-size: 15px;
-      color: beige;
-      font-family: 'DM Serif Text', serif;
-    }
-
-    #start-button {
-      background-image: url("./images/button2.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-color: transparent;
-      background-position: center;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      max-width: 700px;
-      min-height: clamp(80px, 18vw, 160px);
-      font-size: clamp(24px, 8vw, 50px);
-      font-family: 'DM Serif Display';
-      color: #FFBF00;
-    }
-
-    .instructions {
-      margin-bottom: 80px;
-      margin-top: 40px;
-      font-family: 'DM Serif Text';
-    }
-
-    .credits {
-      color: beige;
-      max-width: 100%;
-      margin: 4rem auto 2rem;
-      margin-top: 60px;
-      position: relative;
-      font-family: 'DM Serif Text';
-    }
-
-    .module {
-      margin-top: 40px;
-      color: beige;
-      margin-top: 2rem;
-      position: relative;
-      max-width: 100%;
-      font-family: 'DM Serif Text';
-    }
-
-    /* ---- AR scene hidden until start ---- */
-    #ar-scene {
-      display: none;
-      pointer-events: none;
-    }
-  </style>
+ <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+ <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
 
 <body>
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 
-<!-- Overlay -->
-<div id="permission-overlay">
-  <div id="permission-box">
-    <h2>Welcome</h2>
-    <div class="instructions">
-      <p >
-        In order to experience the AR content, please take the elevator to floor 5. Watch out for any unusual elevator guests!
-      </p>
-    </div>
-    <button id="start-button"> Start Experience </button>
-    <div class="credits">
-      <p>
-        elevator operated by<br> <em>Stephanie Dörr</em> and <em>Lien Olivares</em>
-      </p>
-    </div>
-    <div class="module">
-      <p>
-      CGO BA2 - <em>Physical Intervention</em>
-      </p>
-  </div>
-</div>
+    <a-marker
+      type="pattern"
+      url="./markers/test.patt">
 
-<!-- AR Scene (MUST be in DOM on load) -->
-<a-scene
-  id="ar-scene"
-  embedded
-  arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;">
+      <a-gltf-model
+        src="./models/ferretAR2.glb"
+        scale="0.05 0.05 0.05"
+        rotation="270 0 0"
+        animation-mixer="clip: *; loop: repeat;">
+      </a-gltf-model>
 
-  <a-marker type="pattern" url="./markers/test.patt">
-    <a-gltf-model
-      src="./models/ferretAR2.glb"
-      rotation="-90 0 0"
-      scale="0.3 0.3 0.3"
-      animation-mixer>
-    </a-gltf-model>
-  </a-marker>
+      <a-light type="ambient" color="#404040" intensity="8"></a-light>
 
-  <a-entity camera></a-entity>
-</a-scene>
+    </a-marker>
 
-<script>
-  const startButton = document.getElementById('start-button');
-  const overlay = document.getElementById('permission-overlay');
-  const scene = document.getElementById('ar-scene');
+    <a-entity camera></a-entity>
 
-  startButton.addEventListener('click', () => {
-    // hide UI
-    overlay.style.display = 'none';
-
-    // show scene (do NOT create it dynamically)
-    scene.style.display = 'block';
-    scene.style.visibility = 'visible';
-    scene.style.pointerEvents = 'auto';
-
-    // 🔑 IMPORTANT: explicitly start AR.js after user gesture
-    if (scene.hasLoaded) {
-      scene.systems['arjs'].start();
-    } else {
-      scene.addEventListener('loaded', () => {
-        scene.systems['arjs'].start();
-      }, { once: true });
-    }
-  });
-</script>
-
-
+  </a-scene>
 </body>
 </html>
