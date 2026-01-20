@@ -49,7 +49,7 @@
     width: 90vw;
     height: auto;
     max-width: 700px;       
-    margin-top: clamp(80px, 18vh, 200px);
+    margin-top: clamp(40px, 9vh, 100px);
     padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 20px);
     text-align: center;
     font-family: 'DM Serif Text';
@@ -71,7 +71,7 @@
     }
 
     #permission-box p {
-      font-size: 10px;
+      font-size: 15px;
       color: beige;
       font-family: 'DM Serif Text', serif;
     }
@@ -103,7 +103,7 @@
       color: beige;
       max-width: 100%;
       margin: 4rem auto 2rem;
-      margin-top: 100px;
+      margin-top: 60px;
       position: relative;
       font-family: 'DM Serif Text';
     }
@@ -120,6 +120,7 @@
     /* ---- AR scene hidden until start ---- */
     #ar-scene {
       display: none;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -170,6 +171,10 @@
   document.getElementById('start-button').addEventListener('click', () => {
     document.getElementById('permission-overlay').style.display = 'none';
     document.getElementById('ar-scene').style.display = 'block';
+
+    const scene = document.getElementById('ar-scene');
+    scene.style.visibility = 'visible';
+    scene.style.pointerEvents = 'auto';
   });
 </script>
 
