@@ -85,7 +85,6 @@
       border: none;
       cursor: pointer;
       width: 100%;
-      min-height: 160px;
       max-width: 700px;
       min-height: clamp(80px, 18vw, 160px);
       font-size: clamp(24px, 8vw, 50px);
@@ -168,15 +167,30 @@
 </a-scene>
 
 <script>
-  document.getElementById('start-button').addEventListener('click', () => {
-    document.getElementById('permission-overlay').style.display = 'none';
-    document.getElementById('ar-scene').style.display = 'block';
+  const startButton = document.getElementById('start-button');
+  const overlay = document.getElementById('permission-overlay');
+  const scene = document.getElementById('ar-scene');
 
-    const scene = document.getElementById('ar-scene');
+  startButton.addEventListener('click', () => {
+    // hide UI
+    overlay.style.display = 'none';
+
+    // show scene (do NOT create it dynamically)
+    scene.style.display = 'block';
     scene.style.visibility = 'visible';
     scene.style.pointerEvents = 'auto';
+
+    // 🔑 IMPORTANT: explicitly start AR.js after user gesture
+    if (scene.hasLoaded) {
+      scene.systems['arjs'].start();
+    } else {
+      scene.addEventListener('loaded', () => {
+        scene.systems['arjs'].start();
+      }, { once: true });
+    }
   });
 </script>
+
 
 </body>
 </html>
