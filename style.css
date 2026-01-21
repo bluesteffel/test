@@ -1,0 +1,135 @@
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/dm-serif-display-v17-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* dm-serif-display-italic - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Serif Display';
+    font-style: italic;
+    font-weight: 400;
+    src: url('./fonts/dm-serif-display-v17-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+    /* dm-serif-text-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Serif Text';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/dm-serif-text-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* dm-serif-text-italic - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Serif Text';
+    font-style: italic;
+    font-weight: 400;
+    src: url('./fonts/dm-serif-text-v13-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+    #permission-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: url("./images/goldBorder2.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items:flex-start;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #permission-box {
+      max-width: 90vw;
+      width: 700px;
+      height: auto;
+      text-align: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      margin-top: 200px;
+      font-family: 'DM Serif Text';
+    }
+
+    #permission-box h2 {
+      font-size: 120px;
+      background-image: conic-gradient(
+      #FFBF00 30%,  
+      #997300 60%,   
+      #FFDE7A 80%  
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-color: #FFBF00; 
+      margin: 0 0 1rem 0;
+      font-family: 'DM Serif Display', serif !important;
+    }
+
+    #permission-box p {
+      font-size: 45px;
+      color: beige;
+      font-family: 'DM Serif Text', serif;
+    }
+
+    #permission-box button{
+      background-image: url("./images/button2.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+      max-width: 700px;       
+      min-height: 160px;       
+      padding: 35px 70px; 
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      color: #FFBF00;
+      font-size: 50px;
+      font-family: 'DM Serif Display', serif !important;
+    }
+
+    .button {
+      font-family: 'DM Serif Display';
+      padding: 20px 40px;
+      text-decoration: none;
+      color:#FFBF00;
+      display:block;
+      width: 600px;
+      height: auto;
+    }
+
+    .button img{
+        width: 100%;
+        height: auto;
+    }
+
+    .instructions {
+      margin-bottom: 80px;
+      margin-top: 40px;
+      font-family: 'DM Serif Text';
+    }
+
+    .credits {
+      color: beige;
+      max-width: 100%;
+      margin: 4rem auto 2rem;
+      margin-top: 100px;
+      position: relative;
+      font-family: 'DM Serif Text';
+    }
+
+    .module {
+      margin-top: 40px;
+      color: beige;
+      margin-top: 2rem;
+      position: relative;
+      max-width: 100%;
+      font-family: 'DM Serif Text';
+    }
